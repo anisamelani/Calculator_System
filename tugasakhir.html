@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <title>
+        Tugas Akhir-Lani
+    </title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Nucleo Icons -->
+    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../assets/demo/demo.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.37/vue.global.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+
+        <!-- Judul Atas -->
+        <div class="card ">
+            <div class="card-body">    
+                <h3 class="text-center m-4 p-3">Tugas Akhir</h3>
+            </div>
+        </div> 
+
+        <!-- SOAL-->
+        <div class="card text -dark">
+            <div class="card-header text-center">
+                <h2>Contoh Latihan Soal</h2>
+            </div>
+            <div class="card-body">
+                <button class="collapsible">Penjumlahan</button>
+                <div class="content">
+                    <p>Ani mempunyai 2 pensil lalu ibu membelikannya 2 pensil.</p>
+                    <div id='cek'>
+                        <p>Jumlah {{ checked }}</p>
+                        
+                        <div>
+                            <input type="checkbox" value="Benar!" v-model="checked">
+                            <span>4</span>
+                        </div>
+                        <div>
+                            <input type="checkbox" value="Salah!" v-model="checked">
+                            <span>2</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                <button class="collapsible">Pengurangan</button>
+                <div class="content">
+                    <p>Budi mempunyai 2 Apel lalu ia memberikan Ani 1</p>
+                    <div id='cekdua'>
+                        <p>Jumlah {{ checked }}</p>
+                        
+                        <div>
+                            <input type="checkbox" value="Salah!" v-model="checked">
+                            <span>3</span>
+                        </div>
+                        <div>
+                            <input type="checkbox" value="Benar!" v-model="checked">
+                            <span>1</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                <button class="collapsible">Perkalian</button>
+                <div class="content">
+                    <p> 1 * 6 =</p>
+                    <div id='cektiga'>
+                        <p>Jumlah {{ checked }}</p>
+                        
+                        <div>
+                            <input type="checkbox" value="Salah!" v-model="checked">
+                            <span>6</span>
+                        </div>
+                        <div>
+                            <input type="checkbox" value="Benar!" v-model="checked">
+                            <span>5</span>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight){
+                content.style.maxHeight = null;
+                } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                } 
+            });
+            }
+            const cek = Vue.createApp({
+                data(){
+                    return {
+                        checked: [],
+                    }
+                }
+            }).mount('#cek')
+            const cekdua = Vue.createApp({
+                data(){
+                    return {
+                        checked: [],
+                    }
+                }
+            }).mount('#cekdua')
+            const cektiga = Vue.createApp({
+                data(){
+                    return {
+                        checked: [],
+                    }
+                }
+            }).mount('#cektiga')
+        </script>
+
+        <!-- CARDDIBAWAH -->
+        <div class="row mt-2"  >
+
+            <div class="card col-lg-4">
+                <div class="card-body">
+                    <table class="calculator" >
+                        <h3 class="text-center">Kalkulator Manual</h3>
+                        <script type="text/javascript" src="coba.js"></script>
+                        <tr>
+                          <td colspan="3"> <input class="display-box" style="width: 270px; height:43px; border-radius:10px; background-color: azure;" type="text" id="result" disabled /> </td>
+                       
+                          <!-- clearScreen() function clears all the values -->
+                          <td> <input class="btn btn-warning" type="button" value="C" onclick="clearScreen()" id="btn" /> </td>
+                        </tr>
+                        <tr>
+                          <!-- display() function displays the value of clicked button -->
+                          <td> <input class="btn btn-primary" type="button" value="1" onclick="display('1')" /> </td>
+                          <td> <input class="btn btn-primary" type="button" value="2" onclick="display('2')" /> </td>
+                          <td> <input class="btn btn-primary" type="button" value="3" onclick="display('3')" /> </td>
+                          <td> <input class="btn btn-success" type="button" value="/" onclick="display('/')" /> </td>
+                        </tr>
+                        <tr>
+                          <td> <input class="btn btn-primary" type="button" value="4" onclick="display('4')" /> </td>
+                          <td> <input class="btn btn-primary" type="button" value="5" onclick="display('5')" /> </td>
+                          <td> <input class="btn btn-primary" type="button" value="6" onclick="display('6')" /> </td>
+                          <td> <input class="btn btn-success" type="button" value="-" onclick="display('-')" /> </td>
+                        </tr>
+                        <tr>
+                          <td> <input class="btn btn-primary" type="button" value="7" onclick="display('7')" /> </td>
+                          <td> <input class="btn btn-primary" type="button" value="8" onclick="display('8')" /> </td>
+                          <td> <input class="btn btn-primary" type="button" value="9" onclick="display('9')" /> </td>
+                          <td> <input class="btn btn-success" type="button" value="+" onclick="display('+')" /> </td>
+                        </tr>
+                        <tr>
+                          <td> <input class="btn btn-primary" type="button" value="." onclick="display('.')" /> </td>
+                          <td> <input class="btn btn-primary" type="button" value="0" onclick="display('0')" /> </td>
+                       
+                          <!-- calculate() function evaluates the mathematical expression -->
+                          <td> <input class="btn btn-warning" type="button" value="=" onclick="calculate()" id="btn" /> </td>
+                          <td> <input class="btn btn-success" type="button" value="*" onclick="display('*')" /> </td>
+                        </tr>
+                      </table>
+                </div>
+            </div>
+
+
+            <!-- KALKULATOR -->
+            <div id="hitungan" class="col-lg-4">
+                <div class="card ">
+                    <div class="card-body">
+                        <h3 class="text-center m-4 mb-5">Kalkulator Otomatis</h3>    
+                        <p>Bilangan satu: {{ satu }}</p>
+                        <p>Bilangan dua: {{ dua }}</p>
+                        <p>Jumlah Tambah : {{ jumlah }}</p>
+                        <p>Jumlah Kurang : {{ kurang }}</p>
+                        <p>Jumlah Kali : {{ kali }}</p>
+                        <p>Jumlah Bagi : {{ bagi }}</p>
+                        <button class="btn btn-block btn-primary" @click="hitung()">Hitung</button>
+                    </div>
+                </div> 
+            </div>
+            <script>
+                // const { createApp } = Vue
+        
+                const hitungan = Vue.createApp({
+                    data() {
+                        return {
+                            satu: 10,
+                            dua : 5,
+                            jumlah: '',
+                        }
+                    },
+                    methods: {
+                        hitung(){
+                            this.jumlah = this.satu + this.dua;
+                            this.kurang = this.satu - this.dua;
+                            this.kali = this.satu * this.dua;
+                            this.bagi = this.satu / this.dua;
+                        }
+                        
+                    }
+                }).mount('#hitungan')
+            </script>
+
+                       
+
+            <!-- ANGKA RANDOM -->
+            <div id="angka" class="col-lg-4">
+                
+                <div class="card">
+                    <h3 style="text-align: center;">Transisi</h3>
+                    <div class="card-header">
+                        <button type="button" class="btn btn-warning btn-block" @click="reset()">Reset Item</button>
+                        <button type="button" class="btn btn-primary btn-block" @click="addItem()">Add Item</button>
+                    </div>
+                    <div class="card-body" >
+                        <Transition-group name="list" tag="ul">
+                            <li v-for="item in items" :key="item">
+                                {{ item }}
+                            </li>
+                        </Transition-group>
+                    </div>
+                </div>
+            </div>
+            <script>
+                const getInitialItems = () => [1, 2, 3, 4, 5]
+                let id = getInitialItems().length + 1
+                const angka = Vue.createApp({
+                        data() {
+                            return {
+                                items: [1, 2, 3, 4],
+                                items: getInitialItems()
+                            }
+                        },
+                        methods: {
+                            addItem(){
+                                var num = Math.floor(Math.random() * 101);
+
+                                var idx = Math.floor(Math.random() * (this.items.length - 1));
+
+                                this.items.splice(idx, 0, num);
+                            },
+                            reset() {
+                                this.items = getInitialItems()
+                            },
+                        }
+                    }).mount('#angka')
+
+            </script>            
+                
+        </div>
+
+        <link href="css/bootstrap.css" rel="stylesheet" />
+        <link href="css/rotating-card.css" rel="stylesheet" />
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+        <!--   Core JS Files   -->
+        <script src="../assets/js/core/jquery.min.js"></script>
+        <script src="../assets/js/core/popper.min.js"></script>
+        <script src="../assets/js/core/bootstrap.min.js"></script>
+        <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+        <!--  Google Maps Plugin    -->
+        <!-- Place this tag in your head or just before your close body tag. -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+        <!-- Chart JS -->
+        <script src="../assets/js/plugins/chartjs.min.js"></script>
+        <!--  Notifications Plugin    -->
+        <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+        <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+        <script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
+        <script src="../assets/demo/demo.js"></script>
+        
+
+        <style>       
+            .collapsible {
+            background-color: rgb(28, 29, 28);
+            color: rgb(249, 245, 245);
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            }
+
+            .active, .collapsible:hover {
+            background-color: rgb(40, 38, 38);
+            }
+
+            .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #f4eeee;
+            }
+            .content p{
+                color: black;
+            }
+
+                        
+            /* Popup container - can be anything you want */
+            .popup {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            }
+
+            /* The actual popup */
+            .popup .popuptext {
+            visibility: hidden;
+            width: 160px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -80px;
+            }
+
+            /* Popup arrow */
+            .popup .popuptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+            }
+
+            /* Toggle this class - hide and show the popup */
+            .popup .show {
+            visibility: visible;
+            -webkit-animation: fadeIn 1s;
+            animation: fadeIn 1s;
+            }
+
+            /* Add animation (fade in the popup) */
+            @-webkit-keyframes fadeIn {
+            from {opacity: 0;} 
+            to {opacity: 1;}
+            }
+
+            @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity:1 ;}
+            }
+        </style>
+    </body>
+
+</html>
